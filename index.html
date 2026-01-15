@@ -75,10 +75,10 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <input type="text" placeholder="Search รายการที่ต้องการหา...">
+      <input type="text" id="searchInput" placeholder="Search รายการที่ต้องการหา..." onkeyup="searchProduct()">
       <div class="menu" onclick="showMenu('menu1')">MARBO 9K</div>
       <div class="menu" onclick="showMenu('menu2')">น้ำหวาน ยาแก้ไอ</div>
-      <div class="menu" onclick="showMenu('menu3')">ขอบคุณที่เยี่ยมชม🩶</div>
+      <div class="menu" onclick="showMenu('menu3')">รอสินค้า STOK</div>
     </div>
 
     <!-- Products -->
@@ -112,18 +112,39 @@
       <div class="card" data-menu="menu2"><img src="0.jpg"><div class="name">SIX NINE {69} B.KMH</div><div class="stock out">(สินค้าหมด)</div><div class="price">70 THB</div></div>
       <div class="card" data-menu="menu2"><img src="0.jpg"><div class="name">SIX NINE {69} B.DK</div><div class="stock out">(สินค้าหมด)</div><div class="price">70 THB</div></div>
 
-
-
+      <!-- ===== Menu 3 : ช่องวางสินค้า ===== -->
+      <div class="card" data-menu="menu3"><img src="1.webp"><div class="name">สินค้าใหม่ 1</div><div class="stock">(รอสินค้า)</div><div class="price">-</div></div>
+      <div class="card" data-menu="menu3"><img src="2.webp"><div class="name">สินค้าใหม่ 2</div><div class="stock">(รอสินค้า)</div><div class="price">-</div></div>
+      <div class="card" data-menu="menu3"><img src="1.webp"><div class="name">สินค้าใหม่ 3</div><div class="stock">(รอสินค้า)</div><div class="price">-</div></div>
+      <div class="card" data-menu="menu3"><img src="1.webp"><div class="name">สินค้าใหม่ 4</div><div class="stock">(รอสินค้า)</div><div class="price">-</div></div>
+      <div class="card" data-menu="menu3"><img src="2.webp"><div class="name">สินค้าใหม่ 5</div><div class="stock">(รอสินค้า)</div><div class="price">-</div></div>
       
     </div>
 
   </div>
 
   <script>
+    let currentMenu = 'menu1';
+
     function showMenu(menu) {
+      currentMenu = menu;
       const cards = document.querySelectorAll('.card');
       cards.forEach(card => {
         card.style.display = card.dataset.menu === menu ? 'block' : 'none';
+      });
+    }
+
+    function searchProduct() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+
+      cards.forEach(card => {
+        const name = card.querySelector('.name').textContent.toLowerCase();
+        if (card.dataset.menu === currentMenu && name.includes(input)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
       });
     }
 
