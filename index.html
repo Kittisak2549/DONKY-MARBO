@@ -325,18 +325,6 @@
             card.style.display = card.dataset.menu === menu ? 'block' : 'none';
         });
 
-        // sort products every time menu changes
-        sortProducts(menu);
-
-        document.querySelectorAll('.menu').forEach(m => m.classList.remove('ice'));
-        const activeMenu = [...document.querySelectorAll('.menu')]
-            .find(m => m.getAttribute('onclick')?.includes(menu));
-        if (activeMenu) {
-            activeMenu.classList.add('ice');
-            setTimeout(() => activeMenu.classList.remove('ice'), 500);
-        }
-    });
-
         document.querySelectorAll('.menu').forEach(m => m.classList.remove('ice'));
         const activeMenu = [...document.querySelectorAll('.menu')]
             .find(m => m.getAttribute('onclick')?.includes(menu));
@@ -359,28 +347,6 @@
     document.getElementById('updateDate').textContent = today.toLocaleDateString('th-TH', options);
 
     showMenu('menu1');
-
-    // ===== Sort Products : Best Seller Top / Out of Stock Bottom =====
-    function sortProducts(menu) {
-        const container = document.getElementById('products');
-        const cards = [...container.querySelectorAll(`.card[data-menu="${menu}"]`)];
-
-        cards.sort((a, b) => {
-            const aBest = a.classList.contains('best-seller');
-            const bBest = b.classList.contains('best-seller');
-            const aOut = a.querySelector('.stock')?.classList.contains('out');
-            const bOut = b.querySelector('.stock')?.classList.contains('out');
-
-            if (aBest && !bBest) return -1;
-            if (!aBest && bBest) return 1;
-            if (aOut && !bOut) return 1;
-            if (!aOut && bOut) return -1;
-            return 0;
-        });
-
-        cards.forEach(card => container.appendChild(card));
-    }
-
 
     // ===== Image Preview Logic =====
     document.querySelectorAll('.card img').forEach(img => {
@@ -406,3 +372,4 @@
 </script>
 </body>
 </html>
+
