@@ -508,7 +508,7 @@ const db = getFirestore(app);
         fakeChat.style.display = fakeChat.style.display === 'flex' ? 'none' : 'flex';
     };
 
-    function sendChat() {
+    window.sendChat = function sendChat() {
         // ===== Save to Firestore (Real Chat) =====
         const input = document.getElementById('chatInput');
         const body = document.getElementById('chatBody');
