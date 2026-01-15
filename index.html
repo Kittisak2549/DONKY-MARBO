@@ -428,7 +428,24 @@
 
 </div>
 
-<script>
+<script type="module">
+// ===== Firebase SDK =====
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA2Idm4BvtBbbTzIPk88_GR4wZ9Toiqfso",
+  authDomain: "jr21-marbo-v-chat.firebaseapp.com",
+  projectId: "jr21-marbo-v-chat",
+  storageBucket: "jr21-marbo-v-chat.firebasestorage.app",
+  messagingSenderId: "106898632614",
+  appId: "1:106898632614:web:b611d50e85fd1e8d102967",
+  measurementId: "G-D8KEBGG772"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
     let currentMenu = 'menu1';
 
     function showMenu(menu) {
@@ -492,6 +509,7 @@
     };
 
     function sendChat() {
+        // ===== Save to Firestore (Real Chat) =====
         const input = document.getElementById('chatInput');
         const body = document.getElementById('chatBody');
         const text = input.value.trim();
@@ -501,14 +519,27 @@
         userMsg.className = 'msg user';
         userMsg.textContent = text;
         body.appendChild(userMsg);
+
+        // save message to Firestore
+        addDoc(collection(db, "chats"), {
+            message: text,
+            sender: "user",
+            createdAt: serverTimestamp()
+        });
         input.value = '';
 
         body.scrollTop = body.scrollHeight;
 
         setTimeout(() => {
+            const replies = [
+                'ทางร้านได้รับข้อความแล้วครับ 🙏',
+                'รับทราบครับ เดี๋ยวแอดมินตรวจสอบให้นะครับ 😊',
+                'ขอบคุณที่ติดต่อร้านครับ ทางร้านกำลังเช็คข้อมูลให้ครับ',
+                'โอเคครับ หากมีรายละเอียดเพิ่มเติมแจ้งได้เลยนะครับ'
+            ];
             const botMsg = document.createElement('div');
             botMsg.className = 'msg bot';
-            botMsg.textContent = 'ทางร้านได้รับข้อความแล้วครับ 🙏';
+            botMsg.textContent = replies[Math.floor(Math.random() * replies.length)];
             body.appendChild(botMsg);
             body.scrollTop = body.scrollHeight;
         }, 800);
