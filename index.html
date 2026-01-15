@@ -211,7 +211,7 @@
             transform: translateX(-50%);
             z-index: 999;
             padding: 14px 20px;
-            max-width: 90%;
+            max-width: 100%;
             text-align: center;
             background: rgba(255,255,255,0.95);
             border-radius: 14px;
@@ -230,6 +230,18 @@
                 max-width: 100%;
             }
         }
+            .last-update {
+            text-align: center;
+            font-size: 12px;        /* ⬅️ เล็กลง ไม่กระทบสินค้า */
+            color: #666;
+            margin: 4px 0 6px;     /* ⬅️ ลดพื้นที่แนวตั้ง */
+        }
+
+        @media (max-width: 768px) {
+            .last-update {
+                font-size: 13px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -240,6 +252,12 @@
             <img src="LOGO.jpg" alt="logo">
         </div>
     </div>
+        <div class="header-right">
+            <img src="LOGO.jpg" alt="logo">
+        </div>
+
+    <!-- ===== Last Update ===== -->
+    <div class="last-update">📅 อัปเดตล่าสุด: <span id="updateDate"></span></div>
 
     <div class="container">
 
@@ -309,13 +327,12 @@
                 const name = card.querySelector('.name').textContent.toLowerCase();
                 card.style.display = (card.dataset.menu === currentMenu && name.includes(text)) ? 'block' : 'none';
             });
-       }
+        }
 
         // แสดงวันที่อัปเดตล่าสุด
         const today = new Date();
         const options = { day: '2-digit', month: 'short', year: 'numeric' };
         document.getElementById('updateDate').textContent = today.toLocaleDateString('th-TH', options);
-
 
         showMenu('menu1');
     </script>
