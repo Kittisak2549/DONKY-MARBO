@@ -150,8 +150,8 @@
 
         /* ===== Sold Out Style ===== */
         .card.sold-out {
-            opacity: 0.45;
-            filter: grayscale(100%);
+            opacity: 0.65; /* จางลงเล็กน้อย */
+            filter: grayscale(65%) saturate(70%); /* ยังมีสีเหลือ */
             pointer-events: none;
         }
         .card.sold-out::after {
@@ -423,4 +423,5 @@
 </script>
 </body>
 </html>
+
 
