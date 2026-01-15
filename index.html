@@ -1,275 +1,297 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JR.21 MARBO V.</title>
-  <style>
-    * { box-sizing: border-box; }
-    body { margin:0; font-family: Arial, sans-serif; background:#f2f2f2; }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JR.21 MARBO V.</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    /* ===== Header ===== */
-    .header {
-      background: linear-gradient(90deg, #b71c1c, #d32f2f);
-      color:#fff;
-      padding:15px 30px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-    .header-right img {
-      height:45px;
-      border-radius:8px;
-    }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+        }
 
-    .logo-box {
-      position: relative;
-      border:2px solid #ffffff;
-      color:#ffffff;
-      padding:8px 18px;
-      border-radius:10px;
-      font-weight:bold;
-      font-size:20px;
-      letter-spacing:1px;
-    }
+        /* ===== Header ===== */
+        .header {
+            background: linear-gradient(90deg, #b71c1c, #d32f2f);
+            color: #fff;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .logo-box::after {
-      content: "★";
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      width: 28px;
-      height: 28px;
-      background: #fff;
-      color: #b71c1c;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      font-weight: bold;
-      box-shadow: 0 0 10px gold;
-      animation: starFloat 3s ease-in-out infinite, starGlow 1.8s ease-in-out infinite;
-    }
+        .header-right img {
+            height: 45px;
+            border-radius: 8px;
+        }
 
-    @keyframes starFloat {
-      0% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-4px) rotate(8deg); }
-      100% { transform: translateY(0) rotate(0deg); }
-    }
+        .logo-box {
+            position: relative;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            padding: 8px 18px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
 
-    @keyframes starGlow {
-      0%,100% { box-shadow: 0 0 6px gold; }
-      50% { box-shadow: 0 0 18px gold; }
-    }
+            .logo-box::after {
+                content: "★";
+                position: absolute;
+                top: -10px;
+                right: -10px;
+                width: 28px;
+                height: 28px;
+                background: #fff;
+                color: #b71c1c;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+                font-weight: bold;
+                box-shadow: 0 0 10px gold;
+                animation: starFloat 3s ease-in-out infinite, starGlow 1.8s ease-in-out infinite;
+            }
 
-    /* ===== Layout ===== */
-    .container { display:flex; padding:20px; gap:20px; }
+        @keyframes starFloat {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
 
-    /* ===== Responsive (มือถือ: iPhone / Android แถวละ 3 ชิ้น) ===== */
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-        padding:10px;
-      }
-      .sidebar {
-        width:100%;
-      }
-      .products {
-        grid-template-columns: repeat(3, 1fr);
-        padding:10px;
-        gap:10px;
-      }
-      .card {
-        padding:8px;
-      }
-      .card img {
-        height:100px;
-        border-radius:8px;
-      }
-      .name {
-        font-size:13px;
-      }
-      .price {
-        font-size:12px;
-      }
-    }
-.sidebar {
-        width:100%;
-      }
-      .products {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        padding:10px;
-        gap:12px;
-      }
-      .card {
-        padding:10px;
-      }
-      .card img {
-        height:120px;
-        border-radius:10px;
-      }
-      .name {
-        font-size:14px;
-      }
-      .price {
-        font-size:13px;
-      }
-    }
-      .sidebar {
-        width:100%;
-      }
-      .products {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        padding:12px;
-      }
-      .card img {
-        height:160px;
-      }
-    }
+            50% {
+                transform: translateY(-4px) rotate(8deg);
+            }
 
-    /* ===== Sidebar ===== */
-    .sidebar {
-      width:220px; background:#fff; border-radius:10px; padding:15px;
-    }
-    .sidebar input {
-      width:100%; padding:10px; margin-bottom:15px;
-      border-radius:6px; border:1px solid #ccc;
-    }
-    .menu {
-      background:#f0cece; padding:10px; border-radius:6px;
-      margin-bottom:10px; cursor:pointer;
-    }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
 
-    /* ===== Products ===== */
-    .products {
-      position: relative;
-      flex:1;
-      display:grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap:20px;
-      background-image: url('LOGO.jpg');
-      background-size: cover;
-      background-position: center;
-      padding:20px;
-      border-radius:15px;
-      overflow:hidden;
-    }
-    .products::before {
-      content:"";
-      position:absolute;
-      inset:0;
-      background:inherit;
-      filter:blur(8px);
-      transform:scale(1.1);
-      z-index:0;
-    }
-    .products > * { position:relative; z-index:1; }
+        @keyframes starGlow {
+            0%,100% {
+                box-shadow: 0 0 6px gold;
+            }
 
-    .card {
-      background:#fff; border-radius:15px; padding:15px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
-    }
-    .card img {
-      width:100%; height:200px; object-fit:cover;
-      border-radius:12px;
-    }
-    .name { font-weight:bold; margin-top:10px; }
-    .price { color:#000; }
-    .stock { font-size:13px; color:#555; margin-top:4px; }
-    .out { color:red; font-weight:bold; }
-  .thank-you {
-      margin: 20px;
-      padding: 15px;
-      text-align: center;
-      background: #fff;
-      border-radius: 12px;
-      font-weight: bold;
-      color: #b71c1c;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-  </style>
+            50% {
+                box-shadow: 0 0 18px gold;
+            }
+        }
+
+        /* ===== Layout ===== */
+        .container {
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        /* ===== Responsive (มือถือ) ===== */
+        @media (max-width: 200px) {
+            .container {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .products {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                padding: 12px;
+            }
+
+            .card img {
+                height: 160px;
+            }
+        }
+
+        /* ===== Sidebar ===== */
+        .sidebar {
+            width: 220px;
+            background: #fff;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+            .sidebar input {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border-radius: 6px;
+                border: 1px solid #ccc;
+            }
+
+        .menu {
+            background: #f0cece;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        /* ===== Products ===== */
+        .products {
+            position: relative;
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            background-image: url('LOGO.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+            .products::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: inherit;
+                filter: blur(8px);
+                transform: scale(1.1);
+                z-index: 0;
+            }
+
+            .products > * {
+                position: relative;
+                z-index: 1;
+            }
+
+        .card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+            .card img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 12px;
+            }
+
+        .name {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .price {
+            color: #000;
+        }
+
+        .stock {
+            font-size: 13px;
+            color: #555;
+            margin-top: 4px;
+        }
+
+        .out {
+            color: red;
+            font-weight: bold;
+        }
+
+        .thank-you {
+            margin: 20px;
+            padding: 15px;
+            text-align: center;
+            background: #fff;
+            border-radius: 12px;
+            font-weight: bold;
+            color: #b71c1c;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
 
-  <div class="header">
-    <div class="logo-box">JR.21 MARBO V.</div>
-    <div class="header-right">
-      <img src="LOGO.jpg" alt="logo">
-    </div>
-  </div>
-
-  <div class="container">
-
-    <div class="sidebar">
-      <input type="text" id="searchInput" placeholder="Search รายการที่ต้องการหา..." onkeyup="searchProduct()">
-      <div class="menu" onclick="showMenu('menu1')">MARBO 9K</div>
-      <div class="menu" onclick="showMenu('menu2')">น้ำหวาน ยาแก้ไอ</div>
-      <div class="menu" onclick="showMenu('menu3')">รอสินค้า STOCK</div>
+    <div class="header">
+        <div class="logo-box">JR.21 MARBO V.</div>
+        <div class="header-right">
+            <img src="LOGO.jpg" alt="logo">
+        </div>
     </div>
 
-    <div class="products" id="products">
-       <!-- ===== Menu 1 : สินค้าเดิมทั้งหมด ===== -->
-      <div class="card" data-menu="menu1"><img src="1.webp"><div class="name">SOUR GUMMY</div><div class="stock">(เหลือ 3 ชิ้น)</div><div class="price">420 THB</div></div>
-      <div class="card" data-menu="menu1"><img src="2.webp"><div class="name">PINK BERRY</div><div class="stock">(เหลือ 1 ชิ้น)</div><div class="price">420 THB</div></div>
-      <div class="card" data-menu="menu1"><img src="3.webp"><div class="name">WATERMELON BUBBLEGUM</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
-      <div class="card" data-menu="menu1"><img src="4.webp"><div class="name">WATERMELON</div><div class="stock">(เหลือ 1 ชิ้น)</div><div class="price">420 THB</div></div>
-      <div class="card" data-menu="menu1"><img src="5.webp"><div class="name">PEACH STRAWBERRY</div><div class="stock">(เหลือ 1 ชิ้น)</div><div class="price">420 THB</div></div>
-      <div class="card" data-menu="menu1"><img src="6.webp"><div class="name">KYOHO GRAPE</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
-      <div class="card" data-menu="menu1"><img src="7.webp"><div class="name">ZAPPLE</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
-      <div class="card" data-menu="menu1"><img src="8.webp"><div class="name">BLUE ICE</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
-      <div class="card" data-menu="menu1"><img src="9.webp"><div class="name">PEACH</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
-      <div class="card" data-menu="menu1"><img src="10.webp"><div class="name">APPLE ALOE</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
-      <div class="card" data-menu="menu1"><img src="11.webp"><div class="name">MIXBERRY</div><div class="stock">(เหลือ 1 ชิ้น)</div><div class="price">420 THB</div></div>
-      <div class="card" data-menu="menu1"><img src="12.webp"><div class="name">RAINBOW CANDY</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
-      <div class="card" data-menu="menu1"><img src="13.webp"><div class="name">ORANGE SOUR</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
-      <div class="card" data-menu="menu1"><img src="14.webp"><div class="name">COLA</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
-      <div class="card" data-menu="menu1"><img src="15.webp"><div class="name">DOUBLE MINT</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
-      <div class="card" data-menu="menu1"><img src="16.webp"><div class="name">STRAWBERRY MILKSHAKE</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
-      <div class="card" data-menu="menu1"><img src="17.webp"><div class="name">MENTHOL</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
-      <div class="card" data-menu="menu1"><img src="18.webp"><div class="name">SPARKING LEMO</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
-      <div class="card" data-menu="menu1"><img src="19.webp"><div class="name">GRAPE</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
-      <div class="card" data-menu="menu1"><img src="20.webp"><div class="name">GRAPE LYCHEE</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
-      
-      <!-- ===== Menu 2 : มีสินค้า 2 ชิ้น ===== -->
-      <div class="card" data-menu="menu2"><img src="00.jpg"><div class="name">ALLERGIN {5ดาว} B.KMH</div><div class="stock">(เหลือ 1 ชิ้น)</div><div class="price">90 THB</div></div>
-      <div class="card" data-menu="menu2"><img src="00.jpg"><div class="name">ALLERGIN {5ดาว} B.DK</div><div class="stock">(เหลือ 6 ชิ้น)</div><div class="price">90 THB</div></div>
-      <div class="card" data-menu="menu2"><img src="0.jpg"><div class="name">SIX NINE {69} B.KMH</div><div class="stock out">(สินค้าหมด)</div><div class="price">70 THB</div></div>
-      <div class="card" data-menu="menu2"><img src="0.jpg"><div class="name">SIX NINE {69} B.DK</div><div class="stock out">(สินค้าหมด)</div><div class="price">70 THB</div></div>
-      
-      <!-- ===== Menu 3 : ช่องวางสินค้า ===== -->
-      <div class="card" data-menu="menu3"><img src="LOGO.jpg"><div class="name">สินค้าใหม่ 1</div><div class="stock">(รอสินค้า)</div><div class="price">-</div></div>
-      <div class="card" data-menu="menu3"><img src="LOGO.jpg"><div class="name">สินค้าใหม่ 2</div><div class="stock">(รอสินค้า)</div><div class="price">-</div></div>
-      <div class="card" data-menu="menu3"><img src="LOGO.jpg"><div class="name">สินค้าใหม่ 3</div><div class="stock">(รอสินค้า)</div><div class="price">-</div></div>
-      <div class="card" data-menu="menu3"><img src="LOGO.jpg"><div class="name">สินค้าใหม่ 4</div><div class="stock">(รอสินค้า)</div><div class="price">-</div></div>
-      <div class="card" data-menu="menu3"><img src="LOGO.jpg"><div class="name">สินค้าใหม่ 5</div><div class="stock">(รอสินค้า)</div><div class="price">-</div></div>
-      
+    <div class="container">
+
+        <div class="sidebar">
+            <input type="text" id="searchInput" placeholder="Search รายการที่ต้องการหา..." onkeyup="searchProduct()">
+            <div class="menu" onclick="showMenu('menu1')">MARBO 9K</div>
+            <div class="menu" onclick="showMenu('menu2')">น้ำหวาน ยาแก้ไอ</div>
+            <div class="menu" onclick="showMenu('menu3')">รอสินค้า STOCK</div>
+        </div>
+
+        <div class="products" id="products">
+            <!-- ===== Menu 1 : สินค้าเดิมทั้งหมด ===== -->
+            <div class="card" data-menu="menu1"><img src="1.webp"><div class="name">SOUR GUMMY</div><div class="stock">(เหลือ 3 ชิ้น)</div><div class="price">420 THB</div></div>
+            <div class="card" data-menu="menu1"><img src="2.webp"><div class="name">PINK BERRY</div><div class="stock">(เหลือ 1 ชิ้น)</div><div class="price">420 THB</div></div>
+            <div class="card" data-menu="menu1"><img src="3.webp"><div class="name">WATERMELON BUBBLEGUM</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
+            <div class="card" data-menu="menu1"><img src="4.webp"><div class="name">WATERMELON</div><div class="stock">(เหลือ 1 ชิ้น)</div><div class="price">420 THB</div></div>
+            <div class="card" data-menu="menu1"><img src="5.webp"><div class="name">PEACH STRAWBERRY</div><div class="stock">(เหลือ 1 ชิ้น)</div><div class="price">420 THB</div></div>
+            <div class="card" data-menu="menu1"><img src="6.webp"><div class="name">KYOHO GRAPE</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
+            <div class="card" data-menu="menu1"><img src="7.webp"><div class="name">ZAPPLE</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
+            <div class="card" data-menu="menu1"><img src="8.webp"><div class="name">BLUE ICE</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
+            <div class="card" data-menu="menu1"><img src="9.webp"><div class="name">PEACH</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
+            <div class="card" data-menu="menu1"><img src="10.webp"><div class="name">APPLE ALOE</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
+            <div class="card" data-menu="menu1"><img src="11.webp"><div class="name">MIXBERRY</div><div class="stock">(เหลือ 1 ชิ้น)</div><div class="price">420 THB</div></div>
+            <div class="card" data-menu="menu1"><img src="12.webp"><div class="name">RAINBOW CANDY</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
+            <div class="card" data-menu="menu1"><img src="13.webp"><div class="name">ORANGE SOUR</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
+            <div class="card" data-menu="menu1"><img src="14.webp"><div class="name">COLA</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
+            <div class="card" data-menu="menu1"><img src="15.webp"><div class="name">DOUBLE MINT</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
+            <div class="card" data-menu="menu1"><img src="16.webp"><div class="name">STRAWBERRY MILKSHAKE</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
+            <div class="card" data-menu="menu1"><img src="17.webp"><div class="name">MENTHOL</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
+            <div class="card" data-menu="menu1"><img src="18.webp"><div class="name">SPARKING LEMO</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
+            <div class="card" data-menu="menu1"><img src="19.webp"><div class="name">GRAPE</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
+            <div class="card" data-menu="menu1"><img src="20.webp"><div class="name">GRAPE LYCHEE</div><div class="stock out">(สินค้าหมด)</div><div class="price">420 THB</div></div>
+
+            <!-- ===== Menu 2 : มีสินค้า 2 ชิ้น ===== -->
+            <div class="card" data-menu="menu2"><img src="00.jpg"><div class="name">ALLERGIN {5ดาว} B.KMH</div><div class="stock">(เหลือ 1 ชิ้น)</div><div class="price">90 THB</div></div>
+            <div class="card" data-menu="menu2"><img src="00.jpg"><div class="name">ALLERGIN {5ดาว} B.DK</div><div class="stock">(เหลือ 6 ชิ้น)</div><div class="price">90 THB</div></div>
+            <div class="card" data-menu="menu2"><img src="0.jpg"><div class="name">SIX NINE {69} B.KMH</div><div class="stock out">(สินค้าหมด)</div><div class="price">70 THB</div></div>
+            <div class="card" data-menu="menu2"><img src="0.jpg"><div class="name">SIX NINE {69} B.DK</div><div class="stock out">(สินค้าหมด)</div><div class="price">70 THB</div></div>
+
+            <!-- ===== Menu 3 : ช่องวางสินค้า ===== -->
+            <div class="card" data-menu="menu3"><img src="LOGO.jpg"><div class="name">สินค้าใหม่ 1</div><div class="stock">(รอสินค้า)</div><div class="price">-</div></div>
+            <div class="card" data-menu="menu3"><img src="LOGO.jpg"><div class="name">สินค้าใหม่ 2</div><div class="stock">(รอสินค้า)</div><div class="price">-</div></div>
+            <div class="card" data-menu="menu3"><img src="LOGO.jpg"><div class="name">สินค้าใหม่ 3</div><div class="stock">(รอสินค้า)</div><div class="price">-</div></div>
+            <div class="card" data-menu="menu3"><img src="LOGO.jpg"><div class="name">สินค้าใหม่ 4</div><div class="stock">(รอสินค้า)</div><div class="price">-</div></div>
+            <div class="card" data-menu="menu3"><img src="LOGO.jpg"><div class="name">สินค้าใหม่ 5</div><div class="stock">(รอสินค้า)</div><div class="price">-</div></div>
+
+        </div>
+
+        <!-- ===== Thank You Message ===== -->
+        <div class="thank-you">🙏 ขอบคุณที่สนับสนุนร้าน JR.21 MARBO V. เสมอมา 🙏</div>
+
     </div>
 
-  <!-- ===== Thank You Message ===== -->
-  <div class="thank-you">🙏 ขอบคุณที่สนับสนุนร้าน JR.21 MARBO V. เสมอมา 🙏</div>
+    <script>
+        let currentMenu = 'menu1';
 
-  </div>
+        function showMenu(menu) {
+            currentMenu = menu;
+            document.querySelectorAll('.card').forEach(card => {
+                card.style.display = card.dataset.menu === menu ? 'block' : 'none';
+            });
+        }
 
-  <script>
-    let currentMenu = 'menu1';
+        function searchProduct() {
+            const text = searchInput.value.toLowerCase();
+            document.querySelectorAll('.card').forEach(card => {
+                const name = card.querySelector('.name').textContent.toLowerCase();
+                card.style.display = (card.dataset.menu === currentMenu && name.includes(text)) ? 'block' : 'none';
+            });
+        }
 
-    function showMenu(menu) {
-      currentMenu = menu;
-      document.querySelectorAll('.card').forEach(card => {
-        card.style.display = card.dataset.menu === menu ? 'block' : 'none';
-      });
-    }
-
-    function searchProduct() {
-      const text = searchInput.value.toLowerCase();
-      document.querySelectorAll('.card').forEach(card => {
-        const name = card.querySelector('.name').textContent.toLowerCase();
-        card.style.display = (card.dataset.menu === currentMenu && name.includes(text)) ? 'block' : 'none';
-      });
-    }
-
-    showMenu('menu1');
-  </script>
+        showMenu('menu1');
+    </script>
 </body>
 </html>
